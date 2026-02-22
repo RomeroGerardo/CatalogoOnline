@@ -20,7 +20,7 @@ export const PRODUCTS = [
         name: 'Sudadera Juvenil',
         category: 'NINOS',
         price: 55.00,
-        image: 'https://images.unsplash.com/photo-1519457431-75739545d825?auto=format&fit=crop&q=80&w=600',
+        image: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&q=80&w=600',
         brand: 'PUMA'
     },
     {
