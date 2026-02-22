@@ -33,8 +33,7 @@ export default function ProductCard({ product }: { product: Product }) {
             action: {
                 label: "Ver Carrito",
                 onClick: () => {
-                    // Aquí podríamos disparar el estado del drawer si fuera necesario
-                    console.log("Abrir carrito");
+                    useAppStore.getState().setIsCartOpen(true);
                 }
             }
         });
@@ -53,16 +52,21 @@ export default function ProductCard({ product }: { product: Product }) {
                     size="icon"
                     onClick={handleToggleFavorite}
                     className={cn(
-                        "absolute top-4 right-4 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity z-10",
-                        isFavorite ? "bg-primary text-white opacity-100" : "bg-black/20 text-white"
+                        "absolute top-4 right-4 rounded-full backdrop-blur-md z-10 transition-all",
+                        "md:opacity-0 md:group-hover:opacity-100", // Hidden by default only on desktop
+                        isFavorite ? "bg-primary text-white opacity-100" : "bg-black/20 text-white opacity-100"
                     )}
                 >
                     <Heart className={cn("w-5 h-5", isFavorite && "fill-current")} />
                 </Button>
-                <div className="absolute bottom-0 left-0 w-full p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-black/80 to-transparent">
+                <div className={cn(
+                    "absolute bottom-0 left-0 w-full p-4 md:p-6 transition-all duration-500 bg-gradient-to-t from-black/80 to-transparent",
+                    "md:translate-y-full md:group-hover:translate-y-0", // Slide effect only on desktop
+                    "translate-y-0" // Always visible on mobile
+                )}>
                     <Button
                         onClick={handleAddToCart}
-                        className="w-full rounded-full bg-primary hover:bg-primary/90 text-white font-bold"
+                        className="w-full rounded-full bg-primary hover:bg-primary/90 text-white font-bold h-10 md:h-12 text-xs md:text-sm"
                     >
                         AÑADIR AL CARRITO
                     </Button>
