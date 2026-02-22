@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff0055;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #00f2ff;
+  --color-accent: #facc15;
+  --color-background: #0a0a0a;
+  --color-foreground: #f8fafc;
+  --color-card: #141414;
+  --color-card-foreground: #f8fafc;
+  --color-border: #1f2937;
+  --color-input: #1f2937;
+  --color-ring: #ff0055;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Orbitron", sans-serif;
+
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  .container {
+    @apply mx-auto px-6 md:px-12 lg:px-24;
+    width: 100%;
+    max-width: 1400px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tighter uppercase;
+  }
+}
+
+.glass-morphism {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 0, 85, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
