@@ -3,10 +3,16 @@ import { Toaster } from 'sonner';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Cart from './Cart';
+import FavoritesOverlay from './FavoritesOverlay';
+import SearchOverlay from './SearchOverlay';
 import { useAppStore } from '@/store/useAppStore';
 
 export function RootLayout() {
-    const { isCartOpen, setIsCartOpen } = useAppStore();
+    const {
+        isCartOpen, setIsCartOpen,
+        isFavoritesOpen, setIsFavoritesOpen,
+        isSearchOpen, setIsSearchOpen
+    } = useAppStore();
 
     return (
         <div className="relative min-h-screen bg-background font-sans antialiased text-foreground flex flex-col">
@@ -16,6 +22,8 @@ export function RootLayout() {
             </main>
             <Footer />
             <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+            <FavoritesOverlay isOpen={isFavoritesOpen} onClose={() => setIsFavoritesOpen(false)} />
+            <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
             <Toaster position="top-right" richColors />
         </div>
     );

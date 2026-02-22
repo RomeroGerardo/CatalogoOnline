@@ -25,6 +25,12 @@ interface AppState {
     clearCart: () => void;
     isCartOpen: boolean;
     setIsCartOpen: (isOpen: boolean) => void;
+    isFavoritesOpen: boolean;
+    setIsFavoritesOpen: (isOpen: boolean) => void;
+    isSearchOpen: boolean;
+    setIsSearchOpen: (isOpen: boolean) => void;
+    searchQuery: string;
+    setSearchQuery: (query: string) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -42,6 +48,12 @@ export const useAppStore = create<AppState>()(
             cart: [],
             isCartOpen: false,
             setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
+            isFavoritesOpen: false,
+            setIsFavoritesOpen: (isOpen) => set({ isFavoritesOpen: isOpen }),
+            isSearchOpen: false,
+            setIsSearchOpen: (isOpen) => set({ isSearchOpen: isOpen }),
+            searchQuery: '',
+            setSearchQuery: (searchQuery) => set({ searchQuery }),
             addToCart: (product) =>
                 set((state) => {
                     const existingItem = state.cart.find((item) => item.id === product.id);
